@@ -39,6 +39,10 @@ Before you begin, please clone this repository with the following command:
 ```bash
 git clone https://github.com/AnuragRSimha/CS544-Project-QMSP.git
 ```
+Next, cd into the cloned repo's directory:
+```bash
+cd CS544-Project-QMSP
+```
 
 ### 1. Generate a TLS certificate
 
