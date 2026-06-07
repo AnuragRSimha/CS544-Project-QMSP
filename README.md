@@ -31,11 +31,13 @@ pip install aioquic cryptography
 
 `aioquic` provides the QUIC/TLS 1.3 transport. `cryptography` is used by `certgen.py` to generate a self-signed certificate.
 
+Optional: Installing wireshark would help monitor the flow of packets in real-time. Either download it from https://www.wireshark.org/download.html or run sudo apt-get install -y wireshark.
+
 ---
 
 ## Quick Start
 
-The included `build.sh` script takes care of the full build and run process for you. Open a terminal on computer and simply run:
+The included `build.sh` script takes care of the full build and run process for you. Open a terminal on your computer and simply run:
 ```bash
 chmod +x build.sh
 ./build.sh
