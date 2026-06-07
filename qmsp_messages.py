@@ -348,7 +348,7 @@ def buildError(sessionId: int, seq: int,
     payload = struct.pack("!BH", int(errorCode), len(reasonB)) + reasonB
     return packHeader(MsgType.ERROR, 0, sessionId, seq, len(payload)) + payload
 
-# ─── Client → Server payload parsers ──────────────────────────────────────────
+# Client -> Server payload parsers
 # Each parser returns None on a short or malformed buffer so callers can
 # respond with ERR_PROTO_VIOLATION rather than raising an exception.
 

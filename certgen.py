@@ -1,5 +1,5 @@
 # certgen.py
-# QMSP: QUIC Media Streaming Protocol - interactive command-line client
+# TLS certificate generator for local testing
 # Author: Anurag R Simha
 # Drexel ID: 14763701
 # This file is used to generate a self-signed certificate and private key for the server.
