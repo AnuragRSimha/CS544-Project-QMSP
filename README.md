@@ -35,6 +35,11 @@ pip install aioquic cryptography
 
 ## Quick Start
 
+Before you begin, please clone this repository with the following command:
+```bash
+git clone https://github.com/AnuragRSimha/CS544-Project-QMSP.git
+```
+
 ### 1. Generate a TLS certificate
 
 The server requires a TLS certificate. For local testing, generate a self-signed one:
