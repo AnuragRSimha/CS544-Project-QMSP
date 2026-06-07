@@ -16,7 +16,7 @@ echo "[*] Generating TLS certificate..."
 python3 certgen.py
 
 PROJECT_DIR="$(pwd)"
-CLIENT_CMD_1="cd '$PROJECT_DIR' && sleep 6 && python3 qmsp_client.py --host 127.0.0.1 --user admin --password adminpass --insecure --keepalive 30; exec bash"
+CLIENT_CMD_1="cd '$PROJECT_DIR' && sleep 6 && python3 qmsp_client.py --insecure; exec bash"
 CLIENT_CMD_2="cd '$PROJECT_DIR' && sleep 6 && python3 qmsp_client.py --host 127.0.0.1 --user admin --password adminpass --insecure --keepalive 30; exec bash"
 
 echo "[*] Opening Wireshark..."
