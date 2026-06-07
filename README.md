@@ -146,8 +146,8 @@ A typical session looks like:
 
 [+] Catalog (3 stream(s)):
   [1] 'Big Buck Bunny'     (VOD  9:56  1.05 MB)
-        tier 0: 360p24        500 kbps  640×360@24fps
-        tier 1: 1080p24      2000 kbps  1920×1080@24fps
+        tier 0: 360p24        500 kbps  640x360@24fps
+        tier 1: 1080p24      2000 kbps  1920x1080@24fps
   [2] 'Elephants Dream'    (VOD  10:54  1.05 MB)
   [3] 'Cosmos Laundromat'  (VOD  12:45  1.05 MB)
 
