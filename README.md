@@ -35,6 +35,13 @@ pip install aioquic cryptography
 
 ## Quick Start
 
+The included `build.sh` script takes care of the full build and run process for you. Open a terminal on computer and simply run:
+```bash
+chmod +x build.sh
+./build.sh
+```
+If you prefer running each command individually, please follow the steps below:
+
 Before you begin, please clone this repository with the following command:
 ```bash
 git clone https://github.com/AnuragRSimha/CS544-Project-QMSP.git
