@@ -181,12 +181,12 @@ Full protocol specification is in the Part 2 design document.
 
 ## What Is Implemented
 
-- HELLO / AUTH / CATALOG handshake and full session lifecycle
+- HELLO/AUTH/CATALOG handshake and full session lifecycle
 - On-demand playback with simulated media segments (PLAY, MEDIA_DATA, STOP)
 - PAUSE and RESUME (PLAY with `start_offset` from PAUSE_ACK)
 - SEEK with segment-boundary snapping and new media stream ID
 - Mid-stream QUALITY_CHANGE
-- PING / PONG keepalive with configurable interval and timeout-driven disconnect
+- PING/PONG keepalive with configurable interval and timeout-driven disconnect
 - Full DFA enforcement on both client and server
 - Concurrent async server (multiple simultaneous clients via aioquic)
 - Catalog pagination and substring title filtering
@@ -198,3 +198,7 @@ Due to time constraints, the following features are considered for future improv
 - Live streams (`stream_type = 0x02`) - catalog is VOD (Video On-Demand) only
 - 0-RTT session resumption - bearer token is issued but implementing the fast-path reconnect can be a future improvement
 - HMAC-SHA-256 auth on the client - the server supports it, but the client sends PSK only
+
+## Reflection on Implementation vs. Design
+
+Implementing QMSP surfaced several design gaps that only become visible when I was actually writing the code. The most significant was concurrency on the client side. The Part 2 design treated the control stream as a single logical channel, but during implementation I discovered that the keepalive loop and a manual ping CLI command could race on the same queue and steal each other's PONG replies. This led to splitting pongQueue from ctrlQueue, a distinction the protocol spec never anticipated. A second practical change was pre-serializing the catalog at server startup (`CATALOG_WIRE`) rather than re-packing entries on every CATALOG_REQ, the design assumed on-demand serialization, but having a fixed catalog made the startup-time approach obviously better. The `--no-delay` flag also emerged purely from testing. Realistic bitrate pacing at 500 kbps made a 1 MiB simulated stream take over 16 seconds, which made iterating on the session lifecycle tedious. Finally, asyncio.run_in_executor for readline was not something the design needed to specify. The Part 2 spec correctly focused on the protocol's message structure and state machine, leaving implementation-level concurrency decisions where they belong, and that is in the code. These details aren't gaps in the design so much as the natural boundary between a protocol specification and its implementation. The DFA and PDU definitions held up without modification, which is the real measure of a solid design, and the concurrency model was always an implementation concern, not a protocol one.
