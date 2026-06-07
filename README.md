@@ -5,7 +5,7 @@ Anurag R Simha | 14763701 | ars589@drexel.edu
 
 A prototype client/server implementation of QMSP (QUIC Media Streaming Protocol), a stateful application-layer streaming protocol built on top of QUIC (RFC 9000). The server streams simulated on-demand media segments and the client provides an interactive command-line interface for browsing, playback, and playback control.
 
-Watch a live demo of QMSP here: https://youtu.be/EzIPCPXDuhk
+**Watch a live demo of QMSP here: https://youtu.be/EzIPCPXDuhk**
 
 ---
 
