@@ -90,7 +90,6 @@ What each flag means:
 --cert FILE        TLS certificate PEM file (default: server.crt)
 --key  FILE        TLS private key PEM file (default: server.key)
 --no-delay         Skip inter-segment sleep for fast local testing
---log-level LEVEL  DEBUG/INFO/WARNING/ERROR (default: INFO)
 ```
 
 ### Client
