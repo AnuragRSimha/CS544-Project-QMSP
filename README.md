@@ -223,5 +223,5 @@ Implementing QMSP surfaced several design gaps that only become visible when I w
 - Demo video: https://youtu.be/EzIPCPXDuhk
 - GitHub repository: https://github.com/AnuragRSimha/CS544-Project-QMSP
 - Concurrent async server: Multiple simultaneous clients supported via aioquic
-- Implementation robustness: SEEK, QUALITY_CHANGE, catalog pagination, and HMAC-SHA-256 auth were all listed as "time permitting" in Part 3a and are fully implemented
+- Implementation robustness: SEEK, QUALITY_CHANGE, catalog pagination, and HMAC-SHA-256 auth were all listed as time permitting in Part 3a and are fully implemented
 - Reflection on design vs. implementation: Please see section above
