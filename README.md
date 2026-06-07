@@ -217,3 +217,11 @@ Due to time constraints, the following features are considered for future improv
 ## Reflection on Implementation vs. Design
 
 Implementing QMSP surfaced several design gaps that only become visible when I was actually writing the code. The most significant was concurrency on the client side. The Part 2 design treated the control stream as a single logical channel, but during implementation I discovered that the keepalive loop and a manual ping CLI command could race on the same queue and steal each other's PONG replies. This led to splitting pongQueue from ctrlQueue, a distinction the protocol spec never anticipated. A second practical change was pre-serializing the catalog at server startup (`CATALOG_WIRE`) rather than re-packing entries on every CATALOG_REQ, the design assumed on-demand serialization, but having a fixed catalog made the startup-time approach obviously better. The `--no-delay` flag also emerged purely from testing. Realistic bitrate pacing at 500 kbps made a 1 MiB simulated stream take over 16 seconds, which made iterating on the session lifecycle tedious. Finally, `asyncio.run_in_executor` for readline was not something the design needed to specify. The Part 2 spec correctly focused on the protocol's message structure and state machine, leaving implementation-level concurrency decisions where they belong, and that is in the code. These details aren't gaps in the design so much as the natural boundary between a protocol specification and its implementation. The DFA and PDU definitions held up without modification, which is the real measure of a solid design, and the concurrency model was always an implementation concern, not a protocol one.
+
+## Extra Credit Work
+
+- Demo video: https://youtu.be/EzIPCPXDuhk
+- GitHub repository: https://github.com/AnuragRSimha/CS544-Project-QMSP
+- Concurrent async server: Multiple simultaneous clients supported via aioquic
+- Implementation robustness: SEEK, QUALITY_CHANGE, catalog pagination, and HMAC-SHA-256 auth were all listed as "time permitting" in Part 3a and are fully implemented
+- Reflection on design vs. implementation: Please see section above
