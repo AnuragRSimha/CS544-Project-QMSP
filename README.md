@@ -90,6 +90,7 @@ What each flag means:
 --cert FILE        TLS certificate PEM file (default: server.crt)
 --key  FILE        TLS private key PEM file (default: server.key)
 --no-delay         Skip inter-segment sleep for fast local testing
+--log-level LEVEL  DEBUG/INFO/WARNING/ERROR (default: INFO)
 ```
 
 ### Client
@@ -117,7 +118,6 @@ What each flag means:
 --password PASS      Password (default: alicepass)
 --insecure           Skip TLS certificate verification
 --keepalive SECONDS  Automatic PING interval. 0 = disabled (default: 0)
---log-level LEVEL    DEBUG / INFO / WARNING / ERROR (default: WARNING)
 ```
 
 ---
